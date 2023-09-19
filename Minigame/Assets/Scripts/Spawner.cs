@@ -19,6 +19,7 @@ public class Spawner : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        timeToSpawn = Random.Range(0, 1);
         timerToSpawn = timeToSpawn;
     }
 
@@ -26,12 +27,14 @@ public class Spawner : MonoBehaviour
     void Update()
     {
         timer += Time.deltaTime;
-        timerText.text = ((int) timer).ToString();
+        timerText.text = "Time: " + ((int) timer).ToString();
 
         if(timer >= timerToSpawn)
         {
+            timeToSpawn = Random.Range(0, 4);
             timerToSpawn = timer + timeToSpawn;
-            Instantiate(foodPrefab, position);
+            position = new Vector2(Random.Range(-7.9f,0.95f), Random.Range(-4.18f, 4.19f));
+            Instantiate(foodPrefab, position, Quaternion.identity);
         }
     }
 }
