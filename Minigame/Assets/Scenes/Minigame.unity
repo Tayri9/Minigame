@@ -409,7 +409,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 224c555d159c7d145965a2789aaba7c7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  camara: {fileID: 519420031}
+  slider: {fileID: 1035735973}
+  points: 0
+  timer: 20
 --- !u!1 &606782315
 GameObject:
   m_ObjectHideFlags: 0
@@ -669,6 +671,7 @@ MonoBehaviour:
   - {fileID: 1960357371005064682, guid: 6b527bf59fceb9d43b9c5928028265c7, type: 3}
   - {fileID: 1960357371005064682, guid: 179869f90c9b88f4bbacc3164674bdf7, type: 3}
   - {fileID: 1960357371005064682, guid: 1b38e7c8329c42742a083d5b6036ee51, type: 3}
+  - {fileID: 1960357371005064682, guid: 3647d9123b4b3e940af78650ef4b40fe, type: 3}
   timer: 0
   timerToSpawn: 0
   position: {x: 0, y: 0}
