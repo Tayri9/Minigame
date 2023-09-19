@@ -9,12 +9,13 @@ public class Spawner : MonoBehaviour
     [Header("Poner")]    
     [SerializeField] float timeToSpawn;    
     [SerializeField] TextMeshProUGUI timerText;
-    [SerializeField] GameObject foodPrefab;
+    [SerializeField] GameObject[] foodPrefab;
 
     [Header("NoPoner")]
     [SerializeField] float timer = 0;
     [SerializeField] float timerToSpawn;
     [SerializeField] Vector2 position;
+    [SerializeField] float foodToSpawn;
 
     // Start is called before the first frame update
     void Start()
@@ -34,7 +35,8 @@ public class Spawner : MonoBehaviour
             timeToSpawn = Random.Range(0, 4);
             timerToSpawn = timer + timeToSpawn;
             position = new Vector2(Random.Range(-7.9f,0.95f), Random.Range(-4.18f, 4.19f));
-            Instantiate(foodPrefab, position, Quaternion.identity);
+            foodToSpawn = Random.Range(0, foodPrefab.Length);
+            Instantiate(foodPrefab[(int)foodToSpawn], position, Quaternion.identity);
         }
     }
 }
