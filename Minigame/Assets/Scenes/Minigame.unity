@@ -410,6 +410,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slider: {fileID: 1035735973}
+  pointsText: {fileID: 1632952143}
   points: 0
   timer: 20
 --- !u!1 &606782315
@@ -1090,7 +1091,7 @@ SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 519420032}
+  - {fileID: 581338636}
   - {fileID: 1189634191}
   - {fileID: 1534356631}
   - {fileID: 1824394321}
-  - {fileID: 581338636}

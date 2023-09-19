@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -7,6 +8,7 @@ public class GameManager : MonoBehaviour
 {
     [Header("Poner")]
     [SerializeField] Slider slider;
+    [SerializeField] TextMeshProUGUI pointsText;
 
     [Header ("NoPoner")]
     [SerializeField] int points;
@@ -39,22 +41,27 @@ public class GameManager : MonoBehaviour
                     timer += 5;
                     slider.value = timer;
                 }
+
                 if (hitInfo.collider.CompareTag("Bomb"))
                 {
                     points -= 5;
                     timer -= 10;
                     slider.value = timer;
                 }
+
                 if(timer > 20)
                 {
                     timer = 20;
                 }
+
             } else
             {
                 points -= 2;
                 timer -= 5;
                 slider.value = timer;
             }
+
+            pointsText.text = points.ToString();
         }
     }
 }
