@@ -9,6 +9,7 @@ public class Spawner : MonoBehaviour
     [Header("Poner")]  
     [SerializeField] TextMeshProUGUI timerText;
     [SerializeField] GameObject arrowPrefab;
+    [SerializeField] float firstSpawn;
 
     [Header("NoPoner")]
     [SerializeField] float timer = 0;
@@ -18,8 +19,8 @@ public class Spawner : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        timeToSpawn = Random.Range(0, 2);
-        timerToSpawn = timeToSpawn;
+        //timeToSpawn = Random.Range(0, 2);
+        timerToSpawn = firstSpawn;
     }
 
     // Update is called once per frame
