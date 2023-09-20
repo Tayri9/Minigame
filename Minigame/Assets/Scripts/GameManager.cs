@@ -6,6 +6,22 @@ using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
+    #region SINGLETON
+    public static GameManager instance;
+    private void Awake()
+    {
+        if (GameManager.instance == null)
+        {
+            GameManager.instance = this;
+        }
+        else
+        {
+            Destroy(this);
+        }
+    }
+    #endregion
+
+    #region VARIABLES
     [Header("Poner")]
     [SerializeField] Slider slider;
     [SerializeField] TextMeshProUGUI pointsText;
@@ -13,6 +29,9 @@ public class GameManager : MonoBehaviour
     [Header ("NoPoner")]
     [SerializeField] int points;
     [SerializeField] float timer = 20;
+    #endregion
+
+    #region METHODS
     // Start is called before the first frame update
     void Start()
     {
@@ -28,6 +47,31 @@ public class GameManager : MonoBehaviour
         timer -= Time.deltaTime;
         slider.value = timer;
 
+        if (timer > 20)
+        {
+            timer = 20;
+        }
+    }
+
+    public void ManagePoints(int pointsAmount, int timeAmount)
+    {
+        Debug.Log("managePoints");
+        points += pointsAmount;
+        timer += timeAmount;
+
+        if(points < 0)
+        {
+            points = 0;
+        }
+
+        pointsText.text = "Points: " + points.ToString();
+    }
+    #endregion
+}
+
+//terminar con putons negativos o si el tiempo llega a 0
+
+/*
         if (Input.GetMouseButtonDown(0))
         {            
             RaycastHit2D hitInfo = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero);
@@ -59,11 +103,5 @@ public class GameManager : MonoBehaviour
                 points -= 2;
                 timer -= 5;
                 slider.value = timer;
-            }
-
-            pointsText.text = points.ToString();
-        }
-    }
-}
-
-//terminar con putons negativos o si el tiempo llega a 0
+            }            
+        }*/

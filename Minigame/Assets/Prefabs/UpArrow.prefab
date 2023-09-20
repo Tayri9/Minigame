@@ -11,9 +11,9 @@ GameObject:
   - component: {fileID: 1153681176112266330}
   - component: {fileID: 8144709965175252288}
   - component: {fileID: 1534179719536207244}
-  - component: {fileID: -5288343656930406306}
+  - component: {fileID: -1068211014076280448}
   m_Layer: 0
-  m_Name: FoodBlue
+  m_Name: UpArrow
   m_TagString: Food
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -76,7 +76,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
-  m_Color: {r: 0.43164828, g: 0.9433962, b: 0.87306243, a: 1}
+  m_Color: {r: 0.7547567, g: 0.5223834, b: 0.8584906, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -98,9 +98,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f49b090203db894596e83a78ee17f59, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeToDestroy: 4
+  arrowType: up
+  timeToDestroy: 2
   timer: 0
---- !u!58 &-5288343656930406306
+--- !u!58 &-1068211014076280448
 CircleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
