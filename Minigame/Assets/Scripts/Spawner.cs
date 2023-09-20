@@ -30,9 +30,12 @@ public class Spawner : MonoBehaviour
 
         if(timer >= timerToSpawn)
         {
-            timeToSpawn = Random.Range(1, 5);
-            timerToSpawn = timer + timeToSpawn;
-            Instantiate(arrowPrefab, gameObject.transform.position, Quaternion.identity);
+            //if()
+            {
+                timeToSpawn = Random.Range(1, 5);
+                timerToSpawn = timer + timeToSpawn;
+                Instantiate(arrowPrefab, gameObject.transform.position, gameObject.transform.rotation);
+            }            
         }
     }
 }

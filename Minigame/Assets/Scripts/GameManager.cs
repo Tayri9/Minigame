@@ -29,6 +29,7 @@ public class GameManager : MonoBehaviour
     [Header ("NoPoner")]
     [SerializeField] int points;
     [SerializeField] float timer = 20;
+    public int spawned;
     #endregion
 
     #region METHODS
@@ -51,11 +52,15 @@ public class GameManager : MonoBehaviour
         {
             timer = 20;
         }
+
+        if(timer < 0)
+        {
+            //game over
+        }
     }
 
     public void ManagePoints(int pointsAmount, int timeAmount)
-    {
-        Debug.Log("managePoints");
+    {        
         points += pointsAmount;
         timer += timeAmount;
 
@@ -68,9 +73,6 @@ public class GameManager : MonoBehaviour
     }
     #endregion
 }
-
-//terminar con putons negativos o si el tiempo llega a 0
-
 /*
         if (Input.GetMouseButtonDown(0))
         {            
