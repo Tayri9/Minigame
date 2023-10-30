@@ -11,6 +11,9 @@ public class Menus : MonoBehaviour
     [SerializeField] GameObject levelMenu;
     [SerializeField] GameObject pauseMenu;
 
+    [SerializeField] float timeIn = 1.5f;
+    [SerializeField] float timeOut = 0.5f;
+
     [SerializeField] bool settingsOpenFromMainMenu = false;
     [SerializeField] bool settingsOpenFromPause = false;
     [SerializeField] bool canPause = false;
@@ -18,13 +21,11 @@ public class Menus : MonoBehaviour
     #region Methods
     // Start is called before the first frame update
     void Start()
-    {
-        mainMenu.SetActive(true);
+    {        
         settingsMenu.SetActive(false);
         levelMenu.SetActive(false);
         pauseMenu.SetActive(false);
-        LeanTween.alpha(mainMenu, 0, 0);
-        
+        ActivarMainMenu();
     }
 
     // Update is called once per frame
@@ -38,18 +39,59 @@ public class Menus : MonoBehaviour
             }
         }        
     }
+    void ActivarMainMenu()
+    {        
+        settingsMenu.SetActive(false);
+        levelMenu.SetActive(false);
+        pauseMenu.SetActive(false);
+
+        LeanTween.alphaCanvas(mainMenu.GetComponent<CanvasGroup>(), 0, 0);
+        mainMenu.SetActive(true);
+        LeanTween.alphaCanvas(mainMenu.GetComponent<CanvasGroup>(), 1, timeIn);
+    }
+    void ActivarSettingsMenu()
+    {
+        mainMenu.SetActive(false);
+        levelMenu.SetActive(false);
+        pauseMenu.SetActive(false);
+
+        LeanTween.alphaCanvas(settingsMenu.GetComponent<CanvasGroup>(), 0, 0);
+        settingsMenu.SetActive(true);
+        LeanTween.alphaCanvas(settingsMenu.GetComponent<CanvasGroup>(), 1, timeIn);
+    }
+
+    void ActivarLevelMenu()
+    {
+        mainMenu.SetActive(false);
+        settingsMenu.SetActive(false);
+        pauseMenu.SetActive(false);
+
+        LeanTween.alphaCanvas(levelMenu.GetComponent<CanvasGroup>(), 0, 0);
+        levelMenu.SetActive(true);
+        LeanTween.alphaCanvas(levelMenu.GetComponent<CanvasGroup>(), 1, timeIn);
+    }
+    void ActivarPauseMenu()
+    {
+        mainMenu.SetActive(false);
+        settingsMenu.SetActive(false);
+        levelMenu.SetActive(false);
+
+        LeanTween.alphaCanvas(pauseMenu.GetComponent<CanvasGroup>(), 0, 0);
+        pauseMenu.SetActive(true);
+        LeanTween.alphaCanvas(pauseMenu.GetComponent<CanvasGroup>(), 1, timeIn);
+    }
 
     #region ButtonsMainMenu
     public void ButtonPlay()
-    {
-        mainMenu.SetActive(false);
-        levelMenu.SetActive(true);
+    {        
+        LeanTween.alphaCanvas(mainMenu.GetComponent<CanvasGroup>(), 0, timeOut).setOnComplete(ActivarLevelMenu); 
     }
 
     public void ButtonSettingsMainMenu()
     {
-        mainMenu.SetActive(false);
-        settingsMenu.SetActive(true);
+        LeanTween.alphaCanvas(mainMenu.GetComponent<CanvasGroup>(), 0, timeOut).setOnComplete(ActivarSettingsMenu);
+        //mainMenu.SetActive(false);
+        //settingsMenu.SetActive(true);
         settingsOpenFromMainMenu = true;
         settingsOpenFromPause = false;
     }
@@ -62,14 +104,16 @@ public class Menus : MonoBehaviour
 
     #region ButtonsSettings
     public void ButtonBackSettings()
-    {
-        settingsMenu.SetActive(false);
+    {        
+        //settingsMenu.SetActive(false);
         if (settingsOpenFromMainMenu)
         {
-            mainMenu.SetActive(true);
+            LeanTween.alphaCanvas(settingsMenu.GetComponent<CanvasGroup>(), 0, timeOut).setOnComplete(ActivarMainMenu);
+            //mainMenu.SetActive(true);
         } else if(settingsOpenFromPause)
         {
-            pauseMenu.SetActive(true);
+            LeanTween.alphaCanvas(settingsMenu.GetComponent<CanvasGroup>(), 0, timeOut).setOnComplete(ActivarPauseMenu);
+            //pauseMenu.SetActive(true);
         }
     }
 
@@ -89,12 +133,14 @@ public class Menus : MonoBehaviour
     #region ButtonsLevel
     public void ButtonBackLevel()
     {
-        levelMenu.SetActive(false);
-        mainMenu.SetActive(true);
+        LeanTween.alphaCanvas(levelMenu.GetComponent<CanvasGroup>(), 0, timeOut).setOnComplete(ActivarMainMenu);
+        //levelMenu.SetActive(false);
+        //mainMenu.SetActive(true);
     }
 
     public void ButtonEasy()
     {
+        //LeanTween.alphaCanvas(levelMenu.GetComponent<CanvasGroup>(), 0, timeOut).setOnComplete(ActivarGameUI);
         Debug.Log("Easy");
     }
 
@@ -112,19 +158,22 @@ public class Menus : MonoBehaviour
     #region ButtonsPause
     public void ButtonContinue()
     {
-        pauseMenu.SetActive(false);
+        LeanTween.alphaCanvas(pauseMenu.GetComponent<CanvasGroup>(), 0, timeOut)/*.setOnComplete(ActivarGameUI)*/;
+        //pauseMenu.SetActive(false);
     }
 
     public void ButtonSettingsPause()
     {
-        pauseMenu.SetActive(false);
-        settingsMenu.SetActive(true);
+        LeanTween.alphaCanvas(pauseMenu.GetComponent<CanvasGroup>(), 0, timeOut).setOnComplete(ActivarSettingsMenu);
+        //pauseMenu.SetActive(false);
+        //settingsMenu.SetActive(true);
         settingsOpenFromMainMenu = false;
         settingsOpenFromPause = true;
     }
 
     public void ButtonExitPause()
     {
+        LeanTween.alphaCanvas(pauseMenu.GetComponent<CanvasGroup>(), 0, timeOut).setOnComplete(ActivarMainMenu);
         pauseMenu.SetActive(false);
         mainMenu.SetActive(true);
     }
