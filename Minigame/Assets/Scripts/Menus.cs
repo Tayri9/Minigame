@@ -27,7 +27,10 @@ public class Menus : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (Input.GetKeyDown("p"))
+        {
+            pauseMenu.SetActive(true);
+        }
     }
 
     #region ButtonsMainMenu

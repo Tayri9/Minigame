@@ -1746,8 +1746,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mainMenu: {fileID: 1534356627}
   settingsMenu: {fileID: 762611351}
-  levelMenu: {fileID: 0}
-  pauseMenu: {fileID: 0}
+  levelMenu: {fileID: 1415357774}
+  pauseMenu: {fileID: 989096539}
   settingsOpenFromMainMenu: 0
   settingsOpenFromPause: 0
 --- !u!1 &612336659
