@@ -205,7 +205,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 6269931}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 581338637}
+        m_TargetAssemblyTypeName: Menus, Assembly-CSharp
+        m_MethodName: ButtonSettingsMainMenu
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &6269931
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -460,7 +472,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 106144331}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 581338637}
+        m_TargetAssemblyTypeName: Menus, Assembly-CSharp
+        m_MethodName: ButtonExitPause
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &106144331
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -581,7 +605,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 196632861}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 581338637}
+        m_TargetAssemblyTypeName: Menus, Assembly-CSharp
+        m_MethodName: ButtonBackLevel
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &196632861
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -911,7 +947,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 264428091}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 581338637}
+        m_TargetAssemblyTypeName: Menus, Assembly-CSharp
+        m_MethodName: ButtonExit
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &264428091
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1509,7 +1557,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 518031232}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 581338637}
+        m_TargetAssemblyTypeName: Menus, Assembly-CSharp
+        m_MethodName: ButtonContinue
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &518031232
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1649,6 +1709,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 581338636}
+  - component: {fileID: 581338637}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -1671,6 +1732,24 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &581338637
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 581338635}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ed2d31c0ea0bb0439fb0eb4b96fbc8e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mainMenu: {fileID: 1534356627}
+  settingsMenu: {fileID: 762611351}
+  levelMenu: {fileID: 0}
+  pauseMenu: {fileID: 0}
+  settingsOpenFromMainMenu: 0
+  settingsOpenFromPause: 0
 --- !u!1 &612336659
 GameObject:
   m_ObjectHideFlags: 0
@@ -1753,7 +1832,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 612336662}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 581338637}
+        m_TargetAssemblyTypeName: Menus, Assembly-CSharp
+        m_MethodName: ButtonEasy
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &612336662
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2232,7 +2323,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 753465111}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 581338637}
+        m_TargetAssemblyTypeName: Menus, Assembly-CSharp
+        m_MethodName: ButtonHard
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &753465111
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2758,7 +2861,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 865568603}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 581338637}
+        m_TargetAssemblyTypeName: Menus, Assembly-CSharp
+        m_MethodName: ButtonMedium
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &865568603
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2949,7 +3064,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &989096540
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3270,7 +3385,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1217166759}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 581338637}
+        m_TargetAssemblyTypeName: Menus, Assembly-CSharp
+        m_MethodName: ButtonPrevious
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1217166759
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3905,13 +4032,14 @@ GameObject:
   - component: {fileID: 1534356630}
   - component: {fileID: 1534356629}
   - component: {fileID: 1534356628}
+  - component: {fileID: 1534356632}
   m_Layer: 5
   m_Name: CanvasMainMenu
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1534356628
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3999,6 +4127,18 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &1534356632
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1534356627}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 25fa71818c94fa94e9024b7c7018ec47, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1558183001
 GameObject:
   m_ObjectHideFlags: 0
@@ -4617,7 +4757,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1714763913}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 581338637}
+        m_TargetAssemblyTypeName: Menus, Assembly-CSharp
+        m_MethodName: ButtonSettingsPause
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1714763913
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4738,7 +4890,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1736450004}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 581338637}
+        m_TargetAssemblyTypeName: Menus, Assembly-CSharp
+        m_MethodName: ButtonBackSettings
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1736450004
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4934,7 +5098,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1815088790}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 581338637}
+        m_TargetAssemblyTypeName: Menus, Assembly-CSharp
+        m_MethodName: ButtonPlay
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1815088790
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5881,7 +6057,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2094495399}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 581338637}
+        m_TargetAssemblyTypeName: Menus, Assembly-CSharp
+        m_MethodName: ButtonNext
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &2094495399
 MonoBehaviour:
   m_ObjectHideFlags: 0
