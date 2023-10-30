@@ -13,6 +13,7 @@ public class Menus : MonoBehaviour
 
     [SerializeField] bool settingsOpenFromMainMenu = false;
     [SerializeField] bool settingsOpenFromPause = false;
+    [SerializeField] bool canPause = false;
     #endregion
     #region Methods
     // Start is called before the first frame update
@@ -22,15 +23,20 @@ public class Menus : MonoBehaviour
         settingsMenu.SetActive(false);
         levelMenu.SetActive(false);
         pauseMenu.SetActive(false);
+        LeanTween.alpha(mainMenu, 0, 0);
+        
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown("p"))
+        if (canPause)
         {
-            pauseMenu.SetActive(true);
-        }
+            if (Input.GetKeyDown("p"))
+            {
+                pauseMenu.SetActive(true);
+            }
+        }        
     }
 
     #region ButtonsMainMenu
