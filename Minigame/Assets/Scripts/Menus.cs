@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Localization.Settings;
 
 public class Menus : MonoBehaviour
 {
@@ -17,15 +18,18 @@ public class Menus : MonoBehaviour
     [SerializeField] bool settingsOpenFromMainMenu = false;
     [SerializeField] bool settingsOpenFromPause = false;
     [SerializeField] bool canPause = false;
+
+    int language = 0;
+    int langAvailables;
     #endregion
     #region Methods
     // Start is called before the first frame update
     void Start()
-    {        
-        settingsMenu.SetActive(false);
-        levelMenu.SetActive(false);
-        pauseMenu.SetActive(false);
+    {     
         ActivarMainMenu();
+
+        langAvailables = LocalizationSettings.AvailableLocales.Locales.Count;
+        SelectCurrentLang();
     }
 
     // Update is called once per frame
@@ -38,6 +42,15 @@ public class Menus : MonoBehaviour
                 pauseMenu.SetActive(true);
             }
         }        
+    }
+    void SelectCurrentLang()
+    {
+        UnityEngine.Localization.Locale searcher = LocalizationSettings.AvailableLocales.Locales[language];
+        while (searcher != LocalizationSettings.SelectedLocale && language < langAvailables)
+        {
+            language++;
+            searcher = LocalizationSettings.AvailableLocales.Locales[language];
+        }
     }
     void ActivarMainMenu()
     {        
@@ -120,11 +133,23 @@ public class Menus : MonoBehaviour
     public void ButtonNext() 
     {
         Debug.Log("Next Language");
+        language += 1;
+        if (language >= langAvailables)
+        {
+            language = 0;
+        }
+        LocalizationSettings.SelectedLocale = LocalizationSettings.AvailableLocales.Locales[language];
     }
 
     public void ButtonPrevious()
     {
         Debug.Log("Previous Language");
+        if (language <= 0)
+        {
+            language = langAvailables;
+        }
+        language -= 1;
+        LocalizationSettings.SelectedLocale = LocalizationSettings.AvailableLocales.Locales[language];
     }
 
     //parte de sonido
