@@ -10,6 +10,7 @@ public class Menus : MonoBehaviour
     [SerializeField] GameObject mainMenu;
     [SerializeField] GameObject settingsMenu;
     [SerializeField] GameObject levelMenu;
+    [SerializeField] GameObject gameUI;
 
     [SerializeField] float timeIn = 1.5f;
     [SerializeField] float timeOut = 0.5f;
@@ -32,6 +33,7 @@ public class Menus : MonoBehaviour
     {
         
     }
+
     void SelectCurrentLang()
     {
         UnityEngine.Localization.Locale searcher = LocalizationSettings.AvailableLocales.Locales[language];
@@ -45,6 +47,7 @@ public class Menus : MonoBehaviour
     {        
         settingsMenu.SetActive(false);
         levelMenu.SetActive(false);
+        gameUI.SetActive(false);
 
         LeanTween.alphaCanvas(mainMenu.GetComponent<CanvasGroup>(), 0, 0);
         mainMenu.SetActive(true);
@@ -54,6 +57,7 @@ public class Menus : MonoBehaviour
     {
         mainMenu.SetActive(false);
         levelMenu.SetActive(false);
+        gameUI.SetActive(false);
 
         LeanTween.alphaCanvas(settingsMenu.GetComponent<CanvasGroup>(), 0, 0);
         settingsMenu.SetActive(true);
@@ -64,10 +68,22 @@ public class Menus : MonoBehaviour
     {
         mainMenu.SetActive(false);
         settingsMenu.SetActive(false);
+        gameUI.SetActive(false);
 
         LeanTween.alphaCanvas(levelMenu.GetComponent<CanvasGroup>(), 0, 0);
         levelMenu.SetActive(true);
         LeanTween.alphaCanvas(levelMenu.GetComponent<CanvasGroup>(), 1, timeIn);
+    }
+
+    void ActivarGameUI()
+    {
+        mainMenu.SetActive(false);
+        settingsMenu.SetActive(false);
+        levelMenu.SetActive(false);
+
+        LeanTween.alphaCanvas(gameUI.GetComponent<CanvasGroup>(), 0, 0);
+        gameUI.SetActive(true);
+        LeanTween.alphaCanvas(gameUI.GetComponent<CanvasGroup>(), 1, timeIn);
     }
 
     #region ButtonsMainMenu
@@ -126,17 +142,19 @@ public class Menus : MonoBehaviour
 
     public void ButtonEasy()
     {
-        //LeanTween.alphaCanvas(levelMenu.GetComponent<CanvasGroup>(), 0, timeOut).setOnComplete(ActivarGameUI);
+        LeanTween.alphaCanvas(levelMenu.GetComponent<CanvasGroup>(), 0, timeOut).setOnComplete(ActivarGameUI);
         Debug.Log("Easy");
     }
 
     public void ButtonMedium()
     {
+        LeanTween.alphaCanvas(levelMenu.GetComponent<CanvasGroup>(), 0, timeOut).setOnComplete(ActivarGameUI);
         Debug.Log("Medium");
     }
 
     public void ButtonHard()
     {
+        LeanTween.alphaCanvas(levelMenu.GetComponent<CanvasGroup>(), 0, timeOut).setOnComplete(ActivarGameUI);
         Debug.Log("Hard");
     }
     #endregion
