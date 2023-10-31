@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Localization.Settings;
+using static Game;
 
 public class Menus : MonoBehaviour
 {
@@ -83,7 +84,13 @@ public class Menus : MonoBehaviour
 
         LeanTween.alphaCanvas(gameUI.GetComponent<CanvasGroup>(), 0, 0);
         gameUI.SetActive(true);
-        LeanTween.alphaCanvas(gameUI.GetComponent<CanvasGroup>(), 1, timeIn);
+        LeanTween.alphaCanvas(gameUI.GetComponent<CanvasGroup>(), 1, timeIn).setOnComplete(ChangeToGame);
+    }
+
+    void ChangeToGame()
+    {
+        Debug.Log("Change to game");
+        Game.instance.currentState = Game.StateSelector.Countdown;
     }
 
     #region ButtonsMainMenu
