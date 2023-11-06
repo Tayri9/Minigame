@@ -2983,8 +2983,8 @@ Transform:
   m_GameObject: {fileID: 874730866}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 3.45, z: 0}
-  m_LocalScale: {x: 0.7, y: 6.5, z: 1}
+  m_LocalPosition: {x: 0, y: 3.5, z: 0}
+  m_LocalScale: {x: 0.7, y: 6.8, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 713186506}
@@ -3278,14 +3278,18 @@ MonoBehaviour:
   fishTimer: 0
   fishSpeed: 0
   hook: {fileID: 75877278}
-  hookPosition: 0
-  hookSize: 0.1
-  hookPower: 5
-  hookProgress: 0
-  hookPullVelocity: 0
+  hookSpriteRender: {fileID: 75877279}
+  hookSize: 0.3
   hookPullPower: 0.01
   hookGravityPower: 0.005
-  hookProgressDegradationPower: 0.1
+  hookPosition: 0
+  hookPullVelocity: 0
+  progressBarContainer: {fileID: 713186506}
+  hookPower: 0.2
+  hookProgressDegradationPower: 0.3
+  hookProgress: 0
+  pause: 0
+  failTimer: 10
 --- !u!1 &1123731379
 GameObject:
   m_ObjectHideFlags: 0
