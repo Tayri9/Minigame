@@ -11,7 +11,8 @@ public class Menus : MonoBehaviour
     [SerializeField] GameObject mainMenu;
     [SerializeField] GameObject settingsMenu;
     [SerializeField] GameObject levelMenu;
-    [SerializeField] GameObject gameUI;
+    [SerializeField] GameObject game;
+    [SerializeField] GameObject background;
 
     [SerializeField] float timeIn = 1.5f;
     [SerializeField] float timeOut = 0.5f;
@@ -48,7 +49,7 @@ public class Menus : MonoBehaviour
     {        
         settingsMenu.SetActive(false);
         levelMenu.SetActive(false);
-        gameUI.SetActive(false);
+        game.SetActive(false);
 
         LeanTween.alphaCanvas(mainMenu.GetComponent<CanvasGroup>(), 0, 0);
         mainMenu.SetActive(true);
@@ -58,7 +59,7 @@ public class Menus : MonoBehaviour
     {
         mainMenu.SetActive(false);
         levelMenu.SetActive(false);
-        gameUI.SetActive(false);
+        game.SetActive(false);
 
         LeanTween.alphaCanvas(settingsMenu.GetComponent<CanvasGroup>(), 0, 0);
         settingsMenu.SetActive(true);
@@ -69,7 +70,7 @@ public class Menus : MonoBehaviour
     {
         mainMenu.SetActive(false);
         settingsMenu.SetActive(false);
-        gameUI.SetActive(false);
+        game.SetActive(false);
 
         LeanTween.alphaCanvas(levelMenu.GetComponent<CanvasGroup>(), 0, 0);
         levelMenu.SetActive(true);
@@ -82,9 +83,10 @@ public class Menus : MonoBehaviour
         settingsMenu.SetActive(false);
         levelMenu.SetActive(false);
 
-        LeanTween.alphaCanvas(gameUI.GetComponent<CanvasGroup>(), 0, 0);
-        gameUI.SetActive(true);
-        LeanTween.alphaCanvas(gameUI.GetComponent<CanvasGroup>(), 1, timeIn).setOnComplete(ChangeToGame);
+        //LeanTween.alphaCanvas(game.GetComponent<CanvasGroup>(), 0, 0);
+        game.SetActive(true);
+        //LeanTween.alphaCanvas(game.GetComponent<CanvasGroup>(), 1, timeIn).setOnComplete(ChangeToGame);
+        ChangeToGame();
     }
 
     void ChangeToGame()

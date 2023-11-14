@@ -6,8 +6,8 @@ using UnityEngine;
 public class FisihingMiniGame : MonoBehaviour
 {
     [Header("Pivot")]
-    [SerializeField] Transform topPivot;
-    [SerializeField] Transform bottomPivot;
+    [SerializeField] Transform topLimit;
+    [SerializeField] Transform bottomLimit;
 
     [Header("Fish")]
     [SerializeField] Transform fish;
@@ -81,7 +81,7 @@ public class FisihingMiniGame : MonoBehaviour
         }
 
         hookPosition = Mathf.Clamp(hookPosition, hookSize/2, 1 - hookSize/2);
-        hook.position = Vector3.Lerp(bottomPivot.position, topPivot.position, hookPosition);
+        hook.position = Vector3.Lerp(bottomLimit.position, topLimit.position, hookPosition);
     }
 
     void Fish()
@@ -95,7 +95,7 @@ public class FisihingMiniGame : MonoBehaviour
         }
 
         fishPosition = Mathf.SmoothDamp(fishPosition, fishDestination, ref fishSpeed, smoothMotion);
-        fish.position = Vector3.Lerp(bottomPivot.position, topPivot.position, fishPosition);
+        fish.position = Vector3.Lerp(bottomLimit.position, topLimit.position, fishPosition);
     }
 
     void ProgressCheck()
@@ -147,7 +147,7 @@ public class FisihingMiniGame : MonoBehaviour
         Bounds b = hookSpriteRender.bounds;
         float ySize = b.size.y;
         Vector3 ls = hook.localScale;
-        float distance = Vector3.Distance(topPivot.position, bottomPivot.position);
+        float distance = Vector3.Distance(topLimit.position, bottomLimit.position);
         ls.y = (distance / ySize * hookSize);
         hook.localScale = ls;
     }
