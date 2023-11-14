@@ -46,7 +46,8 @@ public class Menus : MonoBehaviour
         }
     }
     void ActivarMainMenu()
-    {        
+    {      
+        background.SetActive(true);
         settingsMenu.SetActive(false);
         levelMenu.SetActive(false);
         game.SetActive(false);
@@ -79,6 +80,7 @@ public class Menus : MonoBehaviour
 
     void ActivarGameUI()
     {
+        background.SetActive(false);
         mainMenu.SetActive(false);
         settingsMenu.SetActive(false);
         levelMenu.SetActive(false);

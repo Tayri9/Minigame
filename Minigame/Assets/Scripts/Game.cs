@@ -24,6 +24,12 @@ public class Game : MonoBehaviour
     [SerializeField] TextMeshProUGUI countdownText;
     [SerializeField] float timer = 4;
 
+    [Header("Gameover")]
+    [SerializeField] GameObject GameoverCanvas;
+    [SerializeField] TextMeshProUGUI GameoverText;
+    [SerializeField] GameObject backgroundCanvas;
+    [SerializeField] GameObject mainMenuCanvas;
+
     [Header("Limit")]
     [SerializeField] Transform topLimit;
     [SerializeField] Transform bottomLimit;
@@ -56,9 +62,6 @@ public class Game : MonoBehaviour
     [SerializeField] float hookProgressDegradationPower = 0.1f;
     [SerializeField] float hookProgress = 0.3f;
 
-    [Header("No tocar")]
-    [SerializeField] bool pause = false;
-
     public enum StateSelector
     {
         Menu,
@@ -72,16 +75,14 @@ public class Game : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        ResetGame();
         Resize();
+        GameoverCanvas.SetActive(false);
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (pause)
-        {
-            return;
-        }
 
         switch (currentState)
         {
@@ -96,7 +97,7 @@ public class Game : MonoBehaviour
     }
 
     void Playing()
-    {
+    {        
         Fish();
         Hook();
         ProgressCheck();
@@ -175,27 +176,15 @@ public class Game : MonoBehaviour
 
         if (hookProgress <= 0f)
         {
-            Lose();
+            GameOver("Lose");
         }
 
         if (hookProgress >= 1f)
         {
-            Win();
+            GameOver("Win");
         }
 
         hookProgress = Mathf.Clamp(hookProgress, 0f, 1f);
-    }
-
-    void Win()
-    {
-        pause = true;
-        Debug.Log("win");
-    }
-
-    void Lose()
-    {
-        pause = true;
-        Debug.Log("lose");
     }
 
     void Resize()
@@ -206,5 +195,35 @@ public class Game : MonoBehaviour
         float distance = Vector3.Distance(topLimit.position, bottomLimit.position);
         ls.y = (distance / ySize * hookSize);
         hook.localScale = ls;
+    }
+
+    void GameOver(string text)
+    {
+        backgroundCanvas.SetActive(true);
+        GameoverCanvas.SetActive(true);
+        GameoverText.text = text;
+        currentState = StateSelector.Menu;
+        ResetGame();
+    }
+
+    public void MainMenu()
+    {        
+        GameoverCanvas.SetActive(false);
+        mainMenuCanvas.SetActive(true);
+        LeanTween.alphaCanvas(mainMenuCanvas.GetComponent<CanvasGroup>(), 1, 1.5f);
+    }
+
+    void ResetGame()
+    {
+        fish.position = Vector3.zero;
+        fishPosition = 0;
+        fishDestination = 0;
+        fishTimer = 0;
+        fishSpeed = 0;
+        hook.position = Vector3.zero;
+        hookPosition = 0;
+        hookPullVelocity = 0;
+        progressBarContainer.localScale = Vector3.one;
+        hookProgress = 0.3f;
     }
 }
