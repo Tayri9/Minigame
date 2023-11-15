@@ -36,8 +36,8 @@ public class Game : MonoBehaviour
 
     [Header("Fish")]
     [SerializeField] Transform fish;
-    [SerializeField] float timerMultiplicator = 3f;
-    [SerializeField] float smoothMotion = 1f;
+    [SerializeField] float timerMultiplicator = 3f; //facil:6 - medio:3 - dificil:1
+    [SerializeField] float smoothMotion = 1f; //facil:1 - medio:0.75 - dificil:0.5
 
     [Header("Fish - No tocar")]
     [SerializeField] float fishPosition;
@@ -176,12 +176,12 @@ public class Game : MonoBehaviour
 
         if (hookProgress <= 0f)
         {
-            GameOver("Lose");
+            //GameOver("Lose");
         }
 
         if (hookProgress >= 1f)
         {
-            GameOver("Win");
+            //GameOver("Win");
         }
 
         hookProgress = Mathf.Clamp(hookProgress, 0f, 1f);
