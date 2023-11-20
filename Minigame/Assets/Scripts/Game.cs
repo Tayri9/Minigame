@@ -4,6 +4,7 @@ using UnityEngine;
 using TMPro;
 using static Game;
 using System.Threading;
+using UnityEditor;
 
 public class Game : MonoBehaviour
 {
@@ -61,7 +62,7 @@ public class Game : MonoBehaviour
     [SerializeField] float hookPower = 5f;
     [SerializeField] float hookProgressDegradationPower = 0.1f;
     [SerializeField] float hookProgress = 0.3f;
-
+    
     public enum StateSelector
     {
         Menu,
@@ -69,6 +70,7 @@ public class Game : MonoBehaviour
         Countdown        
     }
 
+    [Header("Estado")]
     [SerializeField]
     public StateSelector currentState = StateSelector.Menu;
 
@@ -176,12 +178,12 @@ public class Game : MonoBehaviour
 
         if (hookProgress <= 0f)
         {
-            //GameOver("Lose");
+            GameOver("Lose");
         }
 
         if (hookProgress >= 1f)
         {
-            //GameOver("Win");
+            GameOver("Win");
         }
 
         hookProgress = Mathf.Clamp(hookProgress, 0f, 1f);
@@ -224,6 +226,32 @@ public class Game : MonoBehaviour
         hookPosition = 0;
         hookPullVelocity = 0;
         progressBarContainer.localScale = Vector3.one;
-        hookProgress = 0.3f;
+        hookProgress = 0.3f;        
+    }
+
+    public void SetDificultad(int dificultad)
+    {
+        switch (dificultad)
+        {
+            case 1:
+                timerMultiplicator = 6f;
+                smoothMotion = 1f;
+                break;
+
+            case 2:
+                timerMultiplicator = 3f;
+                smoothMotion = 0.75f;
+                break;
+
+            case 3:
+                timerMultiplicator = 1f;
+                smoothMotion = 0.5f;
+                break;
+        }
     }
 }
+
+/*
+ [SerializeField] float timerMultiplicator = 3f; //facil:6 - medio:3 - dificil:1
+ [SerializeField] float smoothMotion = 1f; //facil:1 - medio:0.75 - dificil:0.5
+*/

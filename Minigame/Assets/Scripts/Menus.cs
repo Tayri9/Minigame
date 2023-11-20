@@ -153,19 +153,22 @@ public class Menus : MonoBehaviour
 
     public void ButtonEasy()
     {
+        Game.instance.SetDificultad(1);
         LeanTween.alphaCanvas(levelMenu.GetComponent<CanvasGroup>(), 0, timeOut).setOnComplete(ActivarGameUI);
         Debug.Log("Easy");
     }
 
     public void ButtonMedium()
     {
+        Game.instance.SetDificultad(2);
         LeanTween.alphaCanvas(levelMenu.GetComponent<CanvasGroup>(), 0, timeOut).setOnComplete(ActivarGameUI);
         Debug.Log("Medium");
     }
 
     public void ButtonHard()
     {
-        LeanTween.alphaCanvas(levelMenu.GetComponent<CanvasGroup>(), 0, timeOut).setOnComplete(ActivarGameUI);
+        Game.instance.SetDificultad(3);
+        LeanTween.alphaCanvas(levelMenu.GetComponent<CanvasGroup>(), 0, timeOut).setOnComplete(ActivarGameUI);        
         Debug.Log("Hard");
     }
     #endregion
