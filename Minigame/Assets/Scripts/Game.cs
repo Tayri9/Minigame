@@ -28,7 +28,8 @@ public class Game : MonoBehaviour
     [Header("Gameover")]
     [SerializeField] GameObject GameoverCanvas;
     [SerializeField] TextMeshProUGUI GameoverText;
-    [SerializeField] GameObject backgroundCanvas;
+    [SerializeField] GameObject FishingMiniGame;
+    //[SerializeField] GameObject backgroundCanvas;
     [SerializeField] GameObject mainMenuCanvas;
 
     [Header("Limit")]
@@ -114,6 +115,7 @@ public class Game : MonoBehaviour
         if (timer < 1)
         {
             LeanTween.alphaCanvas(countdownCanvas.GetComponent<CanvasGroup>(), 0, 1);
+            FishingMiniGame.SetActive(true);
             currentState = StateSelector.Playing;
             timer = 4;
         }
@@ -201,7 +203,8 @@ public class Game : MonoBehaviour
 
     void GameOver(string text)
     {
-        backgroundCanvas.SetActive(true);
+        //backgroundCanvas.SetActive(true);
+        FishingMiniGame.SetActive(false);
         GameoverCanvas.SetActive(true);
         GameoverText.text = text;
         currentState = StateSelector.Menu;

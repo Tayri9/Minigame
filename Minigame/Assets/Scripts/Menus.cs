@@ -12,7 +12,7 @@ public class Menus : MonoBehaviour
     [SerializeField] GameObject settingsMenu;
     [SerializeField] GameObject levelMenu;
     [SerializeField] GameObject game;
-    [SerializeField] GameObject background;
+    //[SerializeField] GameObject background;
 
     [SerializeField] float timeIn = 1.5f;
     [SerializeField] float timeOut = 0.5f;
@@ -47,7 +47,7 @@ public class Menus : MonoBehaviour
     }
     void ActivarMainMenu()
     {      
-        background.SetActive(true);
+        //background.SetActive(true);
         settingsMenu.SetActive(false);
         levelMenu.SetActive(false);
         game.SetActive(false);
@@ -80,7 +80,7 @@ public class Menus : MonoBehaviour
 
     void ActivarGameUI()
     {
-        background.SetActive(false);
+        //background.SetActive(false);
         mainMenu.SetActive(false);
         settingsMenu.SetActive(false);
         levelMenu.SetActive(false);
