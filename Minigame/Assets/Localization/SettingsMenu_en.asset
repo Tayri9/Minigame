@@ -23,7 +23,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 137896550400
-    m_Localized: Sound
+    m_Localized: Effects
     m_Metadata:
       m_Items: []
   - m_Id: 228325744640
@@ -36,6 +36,10 @@ MonoBehaviour:
       m_Items: []
   - m_Id: 456097423360
     m_Localized: Back
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8482240938672128
+    m_Localized: Music
     m_Metadata:
       m_Items: []
   references:

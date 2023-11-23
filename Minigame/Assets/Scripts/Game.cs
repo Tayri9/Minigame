@@ -20,17 +20,24 @@ public class Game : MonoBehaviour
     }
     #endregion
 
-    [Header("Temporizador")]
+    [Header("Countdown")]
     [SerializeField] GameObject countdownCanvas;
     [SerializeField] TextMeshProUGUI countdownText;
-    [SerializeField] float timer = 4;
+    [SerializeField] float timerCountDown = 4;
+
+    [Header("Temporizador")]
+    [SerializeField] TextMeshProUGUI timerText;
+    [SerializeField] float timer = 20; 
 
     [Header("Gameover")]
     [SerializeField] GameObject GameoverCanvas;
     [SerializeField] TextMeshProUGUI GameoverText;
     [SerializeField] GameObject FishingMiniGame;
-    //[SerializeField] GameObject backgroundCanvas;
     [SerializeField] GameObject mainMenuCanvas;
+    [SerializeField] GameObject particulas;
+    [SerializeField] AudioClip winSound;
+    [SerializeField] AudioClip loseSound;
+    [SerializeField] AudioSource audio;
 
     [Header("Limit")]
     [SerializeField] Transform topLimit;
@@ -79,8 +86,8 @@ public class Game : MonoBehaviour
     void Start()
     {
         ResetGame();
-        Resize();
         GameoverCanvas.SetActive(false);
+        audio = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -90,7 +97,7 @@ public class Game : MonoBehaviour
         switch (currentState)
         {
             case StateSelector.Playing:
-                Playing();
+                Playing();                
                 break;
 
             case StateSelector.Countdown:
@@ -104,20 +111,26 @@ public class Game : MonoBehaviour
         Fish();
         Hook();
         ProgressCheck();
+        timer -= Time.deltaTime;
+        timerText.text = ((int)timer).ToString();
+        if(timer <= 0)
+        {
+            GameOver("lose");
+        }
     }
 
     void Countdown()
     {
         countdownCanvas.SetActive(true);
         LeanTween.alphaCanvas(countdownCanvas.GetComponent<CanvasGroup>(), 1, 0);
-        timer -= Time.deltaTime;
-        countdownText.text = ((int)timer).ToString();
-        if (timer < 1)
+        timerCountDown -= Time.deltaTime;
+        countdownText.text = ((int)timerCountDown).ToString();
+        if (timerCountDown < 1)
         {
             LeanTween.alphaCanvas(countdownCanvas.GetComponent<CanvasGroup>(), 0, 1);
             FishingMiniGame.SetActive(true);
             currentState = StateSelector.Playing;
-            timer = 4;
+            timerCountDown = 4;
         }
     }
 
@@ -151,9 +164,9 @@ public class Game : MonoBehaviour
         fishTimer -= Time.deltaTime;
         if (fishTimer < 0f)
         {
-            fishTimer = UnityEngine.Random.value * timerMultiplicator;
+            fishTimer = Random.value * timerMultiplicator;
 
-            fishDestination = UnityEngine.Random.value;
+            fishDestination = Random.value;
         }
 
         fishPosition = Mathf.SmoothDamp(fishPosition, fishDestination, ref fishSpeed, smoothMotion);
@@ -191,41 +204,45 @@ public class Game : MonoBehaviour
         hookProgress = Mathf.Clamp(hookProgress, 0f, 1f);
     }
 
-    void Resize()
-    {
-        Bounds b = hookSpriteRender.bounds;
-        float ySize = b.size.y;
-        Vector3 ls = hook.localScale;
-        float distance = Vector3.Distance(topLimit.position, bottomLimit.position);
-        ls.y = (distance / ySize * hookSize);
-        hook.localScale = ls;
-    }
-
     void GameOver(string text)
     {
-        //backgroundCanvas.SetActive(true);
         FishingMiniGame.SetActive(false);
         GameoverCanvas.SetActive(true);
         GameoverText.text = text;
         currentState = StateSelector.Menu;
         ResetGame();
+
+        if (text.Equals("Win")){
+            Instantiate(particulas);
+            audio.clip = winSound;
+            audio.Play();
+        }
+        else
+        {
+            audio.clip = loseSound;
+            audio.Play();
+        }
     }
 
     public void MainMenu()
     {        
         GameoverCanvas.SetActive(false);
         mainMenuCanvas.SetActive(true);
-        LeanTween.alphaCanvas(mainMenuCanvas.GetComponent<CanvasGroup>(), 1, 1.5f);
+        LeanTween.alphaCanvas(mainMenuCanvas.GetComponent<CanvasGroup>(), 1, 1.5f);        
     }
 
     void ResetGame()
     {
-        fish.position = Vector3.zero;
+        timer = 21f;
+        timerText.text = 20.ToString();
+        //fish.position = Vector3.zero;
+        fish.position = new Vector3(1.74f, 0, 0);
         fishPosition = 0;
         fishDestination = 0;
         fishTimer = 0;
         fishSpeed = 0;
-        hook.position = Vector3.zero;
+        //hook.position = Vector3.zero;
+        hook.position = new Vector3(1.74f, 0, 0);
         hookPosition = 0;
         hookPullVelocity = 0;
         progressBarContainer.localScale = Vector3.one;
