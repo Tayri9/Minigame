@@ -31,12 +31,14 @@ public class Game : MonoBehaviour
 
     [Header("Gameover")]
     [SerializeField] GameObject GameoverCanvas;
-    [SerializeField] TextMeshProUGUI GameoverText;
+    [SerializeField] GameObject WinText;
+    [SerializeField] GameObject LoseText;
     [SerializeField] GameObject FishingMiniGame;
     [SerializeField] GameObject mainMenuCanvas;
     [SerializeField] GameObject particulas;
     [SerializeField] AudioClip winSound;
     [SerializeField] AudioClip loseSound;
+    [SerializeField] AudioClip buttonSound;
     [SerializeField] AudioSource audio;
 
     [Header("Limit")]
@@ -87,7 +89,6 @@ public class Game : MonoBehaviour
     {
         ResetGame();
         GameoverCanvas.SetActive(false);
-        audio = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -115,7 +116,7 @@ public class Game : MonoBehaviour
         timerText.text = ((int)timer).ToString();
         if(timer <= 0)
         {
-            GameOver("lose");
+            GameOver(false);
         }
     }
 
@@ -193,42 +194,59 @@ public class Game : MonoBehaviour
 
         if (hookProgress <= 0f)
         {
-            GameOver("Lose");
+            GameOver(false);
         }
 
         if (hookProgress >= 1f)
         {
-            GameOver("Win");
+            GameOver(true);
         }
 
         hookProgress = Mathf.Clamp(hookProgress, 0f, 1f);
     }
 
-    void GameOver(string text)
+    void GameOver(bool win)
     {
         FishingMiniGame.SetActive(false);
         GameoverCanvas.SetActive(true);
-        GameoverText.text = text;
-        currentState = StateSelector.Menu;
-        ResetGame();
 
-        if (text.Equals("Win")){
+        if (win)
+        {
+            WinText.SetActive(true);
+            LoseText.SetActive(false);
             Instantiate(particulas);
-            audio.clip = winSound;
-            audio.Play();
+            PlayAudio(winSound);
         }
         else
         {
-            audio.clip = loseSound;
-            audio.Play();
+            WinText.SetActive(false);
+            LoseText.SetActive(true);
+            PlayAudio(loseSound);
         }
+        currentState = StateSelector.Menu;
+        ResetGame();        
+    }
+
+    public void PlayAgain()
+    {
+        PlayAudio(buttonSound);
+        FishingMiniGame.SetActive(true);
+        GameoverCanvas.SetActive(false);
+        currentState = StateSelector.Countdown;
     }
 
     public void MainMenu()
-    {        
+    {
+        PlayAudio(buttonSound);
         GameoverCanvas.SetActive(false);
         mainMenuCanvas.SetActive(true);
         LeanTween.alphaCanvas(mainMenuCanvas.GetComponent<CanvasGroup>(), 1, 1.5f);        
+    }
+
+    void PlayAudio(AudioClip clip)
+    {
+        audio.clip = clip;
+        audio.Play();
     }
 
     void ResetGame()

@@ -110,6 +110,7 @@ public class Menus : MonoBehaviour
 
     public void ButtonExit()
     {
+        Application.Quit();
         Debug.Log("Salir");
     }
     #endregion
@@ -141,8 +142,6 @@ public class Menus : MonoBehaviour
         language -= 1;
         LocalizationSettings.SelectedLocale = LocalizationSettings.AvailableLocales.Locales[language];
     }
-
-    //parte de sonido
     #endregion
 
     #region ButtonsLevel
