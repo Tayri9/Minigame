@@ -10,9 +10,9 @@ public class Menus : MonoBehaviour
     #region Variables
     [SerializeField] GameObject mainMenu;
     [SerializeField] GameObject settingsMenu;
+    [SerializeField] GameObject tutorialMenu;
     [SerializeField] GameObject levelMenu;
     [SerializeField] GameObject game;
-    //[SerializeField] GameObject background;
 
     [SerializeField] float timeIn = 1.5f;
     [SerializeField] float timeOut = 0.5f;
@@ -29,13 +29,6 @@ public class Menus : MonoBehaviour
         langAvailables = LocalizationSettings.AvailableLocales.Locales.Count;
         SelectCurrentLang();
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     void SelectCurrentLang()
     {
         UnityEngine.Localization.Locale searcher = LocalizationSettings.AvailableLocales.Locales[language];
@@ -46,9 +39,9 @@ public class Menus : MonoBehaviour
         }
     }
     void ActivarMainMenu()
-    {      
-        //background.SetActive(true);
+    {              
         settingsMenu.SetActive(false);
+        tutorialMenu.SetActive(false);
         levelMenu.SetActive(false);
         game.SetActive(false);
 
@@ -59,6 +52,7 @@ public class Menus : MonoBehaviour
     void ActivarSettingsMenu()
     {
         mainMenu.SetActive(false);
+        tutorialMenu.SetActive(false);
         levelMenu.SetActive(false);
         game.SetActive(false);
 
@@ -66,11 +60,24 @@ public class Menus : MonoBehaviour
         settingsMenu.SetActive(true);
         LeanTween.alphaCanvas(settingsMenu.GetComponent<CanvasGroup>(), 1, timeIn);
     }
+    void ActivarTutorialMenu()
+    {
+        mainMenu.SetActive(false);
+        settingsMenu.SetActive(false);
+        levelMenu.SetActive(false);
+        game.SetActive(false);
+
+        LeanTween.alphaCanvas(tutorialMenu.GetComponent<CanvasGroup>(), 0, 0);
+        tutorialMenu.SetActive(true);
+        LeanTween.alphaCanvas(tutorialMenu.GetComponent<CanvasGroup>(), 1, timeIn);
+    }
+
 
     void ActivarLevelMenu()
     {
         mainMenu.SetActive(false);
         settingsMenu.SetActive(false);
+        tutorialMenu.SetActive(false);
         game.SetActive(false);
 
         LeanTween.alphaCanvas(levelMenu.GetComponent<CanvasGroup>(), 0, 0);
@@ -80,14 +87,12 @@ public class Menus : MonoBehaviour
 
     void ActivarGameUI()
     {
-        //background.SetActive(false);
         mainMenu.SetActive(false);
         settingsMenu.SetActive(false);
+        tutorialMenu.SetActive(false);
         levelMenu.SetActive(false);
 
-        //LeanTween.alphaCanvas(game.GetComponent<CanvasGroup>(), 0, 0);
         game.SetActive(true);
-        //LeanTween.alphaCanvas(game.GetComponent<CanvasGroup>(), 1, timeIn).setOnComplete(ChangeToGame);
         ChangeToGame();
     }
 
@@ -106,6 +111,11 @@ public class Menus : MonoBehaviour
     public void ButtonSettingsMainMenu()
     {
         LeanTween.alphaCanvas(mainMenu.GetComponent<CanvasGroup>(), 0, timeOut).setOnComplete(ActivarSettingsMenu);        
+    }
+
+    public void ButtonTutorial()
+    {
+        LeanTween.alphaCanvas(mainMenu.GetComponent<CanvasGroup>(), 0, timeOut).setOnComplete(ActivarTutorialMenu);
     }
 
     public void ButtonExit()
@@ -141,6 +151,13 @@ public class Menus : MonoBehaviour
         }
         language -= 1;
         LocalizationSettings.SelectedLocale = LocalizationSettings.AvailableLocales.Locales[language];
+    }
+    #endregion
+
+    #region ButtonsTutorial
+    public void ButtonBackTutorial()
+    {
+        LeanTween.alphaCanvas(tutorialMenu.GetComponent<CanvasGroup>(), 0, timeOut).setOnComplete(ActivarMainMenu);
     }
     #endregion
 

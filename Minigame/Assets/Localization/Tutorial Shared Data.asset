@@ -10,35 +10,27 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5b11a58205ec3474ca216360e9fa74a8, type: 3}
-  m_Name: MainMenu Shared Data
+  m_Name: Tutorial Shared Data
   m_EditorClassIdentifier: 
-  m_TableCollectionName: MainMenu
-  m_TableCollectionNameGuidString: 618f5520911f64c4fa61eed35418f602
+  m_TableCollectionName: Tutorial
+  m_TableCollectionNameGuidString: 6bbb6429ca3297c4fa19b555980d0343
   m_Entries:
-  - m_Id: 156166938624
-    m_Key: ButtonPlay
+  - m_Id: 226723442688
+    m_Key: TitleText
     m_Metadata:
       m_Items: []
-  - m_Id: 665623879680
-    m_Key: ButtonSettings
-    m_Metadata:
-      m_Items: []
-  - m_Id: 747328921600
-    m_Key: ButttonExit
-    m_Metadata:
-      m_Items: []
-  - m_Id: 9138802149109760
-    m_Key: TutorialButton
+  - m_Id: 286068649984
+    m_Key: ExplicacionText
     m_Metadata:
       m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:
-    rid: 8063593588701790232
+    rid: 779403690163306496
   references:
     version: 2
     RefIds:
-    - rid: 8063593588701790232
+    - rid: 779403690163306496
       type: {class: DistributedUIDGenerator, ns: UnityEngine.Localization.Tables, asm: Unity.Localization}
       data:
-        m_CustomEpoch: 1698742460852
+        m_CustomEpoch: 1700919732543

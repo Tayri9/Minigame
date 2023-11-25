@@ -30,6 +30,10 @@ MonoBehaviour:
     m_Localized: Exit
     m_Metadata:
       m_Items: []
+  - m_Id: 9138802149109760
+    m_Localized: How to play
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

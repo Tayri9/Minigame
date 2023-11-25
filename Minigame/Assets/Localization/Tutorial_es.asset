@@ -10,28 +10,21 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e9620f8c34305754d8cc9a7e49e852d9, type: 3}
-  m_Name: MainMenu_es
+  m_Name: Tutorial_es
   m_EditorClassIdentifier: 
   m_LocaleId:
     m_Code: es
-  m_SharedData: {fileID: 11400000, guid: 618f5520911f64c4fa61eed35418f602, type: 2}
+  m_SharedData: {fileID: 11400000, guid: 6bbb6429ca3297c4fa19b555980d0343, type: 2}
   m_Metadata:
     m_Items: []
   m_TableData:
-  - m_Id: 156166938624
-    m_Localized: Jugar
-    m_Metadata:
-      m_Items: []
-  - m_Id: 665623879680
-    m_Localized: Ajustes
-    m_Metadata:
-      m_Items: []
-  - m_Id: 747328921600
-    m_Localized: Salir
-    m_Metadata:
-      m_Items: []
-  - m_Id: 9138802149109760
+  - m_Id: 226723442688
     m_Localized: Como jugar
+    m_Metadata:
+      m_Items: []
+  - m_Id: 286068649984
+    m_Localized: "Debes mantener el anzuelo sobre el pez. Para elevarlo, mant\xE9n
+      presionado el bot\xF3n izquierdo del rat\xF3n; para bajarlo, suelta el bot\xF3n.\r\n\r\n\r\n\r\n\r\n"
     m_Metadata:
       m_Items: []
   references:
