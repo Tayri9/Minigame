@@ -72,6 +72,11 @@ public class Game : MonoBehaviour
     [SerializeField] float hookPower = 5f;
     [SerializeField] float hookProgressDegradationPower = 0.1f;
     [SerializeField] float hookProgress = 0.3f;
+
+    [Header("Caña")]
+    [SerializeField] GameObject canaPescar;
+    [SerializeField] float rotationCana = 0;
+    [SerializeField] float canaPower = 10;
     
     public enum StateSelector
     {
@@ -132,6 +137,8 @@ public class Game : MonoBehaviour
             FishingMiniGame.SetActive(true);
             currentState = StateSelector.Playing;
             timerCountDown = 4;
+            rotationCana = 0;
+            canaPescar.transform.rotation = Quaternion.Euler(0, 0, rotationCana);
         }
     }
 
@@ -186,10 +193,15 @@ public class Game : MonoBehaviour
         if (min < fishPosition && fishPosition < max)
         {
             hookProgress += hookPower * Time.deltaTime;
+
+            rotationCana += canaPower * Time.deltaTime;
+            canaPescar.transform.rotation = Quaternion.Euler(0, 0, rotationCana);
         }
         else
         {
             hookProgress -= hookProgressDegradationPower * Time.deltaTime;
+            rotationCana -= canaPower * Time.deltaTime;
+            canaPescar.transform.rotation = Quaternion.Euler(0, 0, rotationCana);
         }
 
         if (hookProgress <= 0f)
@@ -264,7 +276,8 @@ public class Game : MonoBehaviour
         hookPosition = 0;
         hookPullVelocity = 0;
         progressBarContainer.localScale = Vector3.one;
-        hookProgress = 0.3f;        
+        hookProgress = 0.3f;
+        canaPescar.transform.rotation = Quaternion.Euler(0, 0, 0);
     }
 
     public void SetDificultad(int dificultad)

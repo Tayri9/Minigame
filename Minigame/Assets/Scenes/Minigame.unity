@@ -4020,6 +4020,9 @@ MonoBehaviour:
   hookPower: 0.2
   hookProgressDegradationPower: 0.3
   hookProgress: 0.3
+  canaPescar: {fileID: 1017805262}
+  rotationCana: 0
+  canaPower: 10
   currentState: 0
 --- !u!82 &581338639
 AudioSource:
@@ -5772,7 +5775,7 @@ Transform:
   m_GameObject: {fileID: 833264130}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 6.33, y: 1.88, z: 0}
+  m_LocalPosition: {x: 6.33, y: 1.9, z: 0}
   m_LocalScale: {x: 0.3, y: 0.3, z: 0.3}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -6295,7 +6298,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!212 &878821602
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -7083,6 +7086,38 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 987500905}
   m_CullTransparentMesh: 1
+--- !u!1 &1017805262
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1017805263}
+  m_Layer: 0
+  m_Name: "Ca\xF1a"
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1017805263
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1017805262}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -4.85, y: -0.71, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1258151424}
+  m_Father: {fileID: 1429320832}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1091547218
 GameObject:
   m_ObjectHideFlags: 0
@@ -7884,13 +7919,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1258151423}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.035754148, y: 0.9993606, z: 0, w: 0}
-  m_LocalPosition: {x: -5.67, y: -1.12, z: 0}
-  m_LocalScale: {x: 1.3651578, y: 1.5935712, z: 0.4}
+  m_LocalRotation: {x: -0.011893302, y: 0.9999293, z: -0, w: 0}
+  m_LocalPosition: {x: 1.34, y: -0.46, z: 0}
+  m_LocalScale: {x: 1.3651577, y: 1.5935711, z: 0.4}
   m_ConstrainProportionsScale: 1
   m_Children: []
-  m_Father: {fileID: 1429320832}
-  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 4.098}
+  m_Father: {fileID: 1017805263}
+  m_LocalEulerAnglesHint: {x: 0, y: 180, z: -1.363}
 --- !u!212 &1258151425
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -7932,7 +7967,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: a3232c29f9b0eb74c8338821c7740ecf, type: 3}
+  m_Sprite: {fileID: 21300000, guid: cf6aef87f5fccf0458742f01cb251135, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -9059,13 +9094,14 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1429320832}
+  - component: {fileID: 1429320833}
   m_Layer: 0
   m_Name: Boat
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1429320832
 Transform:
   m_ObjectHideFlags: 0
@@ -9080,9 +9116,30 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 901126519}
-  - {fileID: 1258151424}
+  - {fileID: 1017805263}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &1429320833
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1429320831}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 560f2264545839041a5c0747caa090ce, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &1444408097
 GameObject:
   m_ObjectHideFlags: 0
